@@ -1,4 +1,4 @@
-Dado("Que estou na tela de login") do
+Dado("que estou na tela de login") do
     @login = LoginPage.new
     @login.acessar_url
 end
@@ -12,25 +12,29 @@ Então("recebo mensagem de erro") do
 end
 
 Dado("preencho os campos com dados validos") do
-    @login.preencher_dados
+    @login.preencher_dados_validos
 end
 
-Então("Login realizado com sucesso") do
-    @login.sucesso
+Entao("Login realizado com sucesso") do
+    @login.tela_logada?
 end
 
 Dado("eu digito usuario correto e senha incorreta") do
-    @login.dados_incorretos
+    @login.usuario_correto_senha_incorreta
 end
 
-Então("sistema exibe mensagem de erro senha inválida") do
-    pending # Write code here that turns the phrase above into concrete actions
+Entao("sistema exibe mensagem de erro senha inválida") do
+    @login.erro_senha_invalida
 end
 
 Dado("que acesso a URL da area logada") do
-    pending # Write code here that turns the phrase above into concrete actions
+    @login.acessa_URL_logada
+end
+
+Entao("recebo mensagem de erro URL") do
+    @login.erro_URL?
 end
 
 Então("sou redirecionado para a tela de login") do
-    @login.piscininha
+    @login.redireciona_tela_login?
 end
